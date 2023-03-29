@@ -27,7 +27,7 @@ export default function FriendList(){
         <div>
             <div className="bg-[#2b2d31] w-[260px] gap-y-[10px] h-[94%] overflow-hidden">
                 <div  className="p-[10px]">
-                    <input type="text" placeholder="Rechercher/lancer une conv..." className="focus:outline-none w-[220px] h-[28px] rounded-md bg-[#1e1f22] text-[#D3D3D3] indent-3 text-[13px]" />
+                    <input type="text" placeholder="Rechercher/lancer une conv..." className="focus:outline-none w-[240px] h-[28px] rounded-md bg-[#1e1f22] text-[#D3D3D3] indent-3 text-[13px]" />
                 </div>
                 <hr className="border-[#1e1f22]" />
                 <div className=" m-[10px] ">
