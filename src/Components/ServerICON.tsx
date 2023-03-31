@@ -13,7 +13,7 @@ const ServerICON = ({Server, isSelected, setSelected}) => {
     };
     return(
         <button className="relative h-[55px] w-[55px] mb-[10px]">
-            <div onClick={setSelected} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`overflow-hidden hover:bg-[#5865f2] ${isSelected ? "rounded-2xl bg-[#5865f2]" : "rounded-full bg-[#36393e]"} hover:rounded-2xl h-[50px] w-[50px] flex items-center justify-center transition ease-in-out duration-200 relative`}>
+            <div onClick={()=>{setSelected(); window.location.href=Server.url}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={`overflow-hidden hover:bg-[#5865f2] ${isSelected ? "rounded-2xl bg-[#5865f2]" : "rounded-full bg-[#36393e]"} hover:rounded-2xl h-[50px] w-[50px] flex items-center justify-center transition ease-in-out duration-200 relative`}>
                 <img src={Server.imgUrl} width="30px" />
             </div>
             {(Server.mentions > 0) && <p className="absolute text-[12px] text-white text-bold -bottom-[5%] -right-[5%] bg-[#F23F42] rounded-full px-[7px] border-[4px] font-semibold border-[#1e2124]">{Server.mentions}</p>}

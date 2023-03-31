@@ -1,63 +1,55 @@
 import React from 'react'
 import Friend from './Friend.tsx'
-import * as types from '../Types'
+import './main.css'
+import * as types from '../Types.tsx'
+import { useParams } from "react-router-dom";
 
 export default function FriendList(){
-    const [selected, setSelected] = React.useState(-1)
-    const user1: types.user ={
-        id: 4,
-        name: "Dalil",
-        imgUrl: "/assets/dalil.jpg",
+    const id = useParams()
 
-    }
-    const user2: types.user ={
-        id: 5,
-        name: "John",
-        imgUrl: "/assets/user.png",
-
-    }
-    const user3: types.user ={
-        id: 6,
-        name: "Mr Beast",
-        imgUrl: "/assets/mrbeast.jpg",
-
-    }
+    const [selected, setSelected] = React.useState(id)
+    const user = require("../Data/users.json")
 
     return(
         <div>
-            <div className="bg-[#2b2d31] w-[260px] gap-y-[10px] h-[94%] overflow-hidden">
+            <div className="bg-[#2b2d31] w-[260px] gap-y-[10px] h-[94vh] overflow-y-auto test">
+                <div className="FriendList">
                 <div  className="p-[10px]">
                     <input type="text" placeholder="Rechercher/lancer une conv..." className="focus:outline-none w-[240px] h-[28px] rounded-md bg-[#1e1f22] text-[#D3D3D3] indent-3 text-[13px]" />
                 </div>
-                <hr className="border-[#1e1f22]" />
-                <div className=" m-[10px] ">
-                    <button onClick={()=>setSelected(1)} className={`flex items-center gap-x-[23px] p-[10px] ${selected == 1 ? "bg-[#3f4248]" : "bg-[#2b2d31]"} hover:bg-[#3f4248] rounded-[5px] w-full`}>
-                        <img src="/assets/Amis.png" width="20px" />
-                        <p className="text-[#f2f3f5] text-[14px]">Amis</p>
+                <hr className="border-[#1e1f22] border-[0.5px]" />
+                <div className=" mx-[10px] mt-[10px] mb-[5px]">
+                    <button onClick={()=>setSelected(1)} className={`flex items-center justify-between p-[10px] ${selected == 1 ? "bg-[#3f4248]" : "bg-[#2b2d31]"} hover:bg-[#3f4248] rounded-[5px] w-full`}>
+                        <div className="flex gap-x-[23px] items-center">
+                            <img src="/assets/Amis.png" width="20px" />
+                            <p className="text-[#f2f3f5] text-[14px]">Amis</p>
+                        </div>
+                        <p className="text-[12px] text-white text-bold bg-[#F23F42] rounded-full px-[7px] font-semibold">10</p>
                     </button>
                 </div>
-                <div className=" m-[10px] ">
+                <div className=" mx-[10px] mb-[5px]">
                     <button onClick={()=>setSelected(2)} className={`flex items-center gap-x-[23px] p-[10px] ${selected == 2 ? "bg-[#3f4248]" : "bg-[#2b2d31]"} hover:bg-[#3f4248] rounded-[5px] w-full`}>
                         <img src="/assets/nitro.svg" width="20px" />
                         <p className="text-[#f2f3f5] text-[14px]">Nitro</p>
                     </button>
                 </div>
-                <div className=" m-[10px] ">
+                <div className=" mx-[10px] mb-[5px]">
                     <button onClick={()=>setSelected(3)} className={`flex items-center gap-x-[23px] p-[10px] ${selected == 3 ? "bg-[#3f4248]" : "bg-[#2b2d31]"} hover:bg-[#3f4248] rounded-[5px] w-full`}>
                         <img src="/assets/email.png" width="20px" />
                         <p className="text-[#f2f3f5] text-[14px]">Demandes de mesa...</p>
                     </button>
                 </div>
 
-                <div className="flex items-center justify-between p-[20px]">
+                <div className="flex items-center justify-between mt-[30px] mx-[20px] mb-[10px]">
                     <p className="text-[#8c8d96] text-[13px] font-medium">MESSAGES PRIVES</p>
                     <img src="/assets/plus.png" width="10px" />
                 </div>
                 
-                <Friend userFriend={user1} isSelected={selected == user1.id} setSelected={()=>{setSelected(user1.id)}} />
-                <Friend userFriend={user2} isSelected={selected == user2.id} setSelected={()=>{setSelected(user2.id)}} />
-                <Friend userFriend={user3} isSelected={selected == user3.id} setSelected={()=>{setSelected(user3.id)}} />
+                <Friend userFriend={user[1]} isSelected={selected == user[1].id} setSelected={()=>{setSelected(user[1].id)}} />
+                <Friend userFriend={user[2]} isSelected={selected == user[2].id} setSelected={()=>{setSelected(user[2].id)}} />
+                <Friend userFriend={user[3]} isSelected={selected == user[3].id} setSelected={()=>{setSelected(user[3].id)}} />
 
+            </div>
             </div>
             <div className="px-[5px] bg-[#232428] flex items-center justify-between h-[6%]">
                 <button onClick={setSelected} className={`ml py-[5px] pr-[40px] bg-[#232428] text-[#8c8d96] flex items-center justify-between hover:bg-[#3f4248] text-[15px] font-medium rounded-[5px]`}>

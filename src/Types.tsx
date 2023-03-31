@@ -4,6 +4,7 @@ export type discordServer = {
     notifications: boolean;
     mentions: number;
     imgUrl: string;
+    url: string;
 }
 
 export type user = {
